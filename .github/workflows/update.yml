@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install Python dependencies
+         run: pip install requests   
       - name: Check for new eliminations
         run: python update.py
       - name: Save verified updates
