@@ -5,22 +5,22 @@ const cast=[['Amber Glenn','Pasha Pashkov'],['Ciara Miller','Brandon Armstrong']
 // Upload a correctly identified, licensed image for each contestant to the photos/ folder.
 // Files should use the exact filenames below. No automated image searches or lookalikes.
 const portraits={
-'Amber Glenn':'photos/amber-glenn.jpg',
-'Ciara Miller':'photos/ciara-miller.jpg',
-'Conner Leavitt':'photos/conner-leavitt.jpg',
-'Connor Wood':'photos/connor-wood.jpg',
-'Ezra Frech':'photos/ezra-frech.jpg',
-'Giada De Laurentiis':'photos/giada-de-laurentiis.jpg',
-'Guillermo Rodriguez':'photos/guillermo-rodriguez.jpg',
-'Harry Shum Jr.':'photos/harry-shum-jr.jpg',
-'Jackson Olson':'photos/jackson-olson.jpg',
-'Jenna Dewan':'photos/jenna-dewan.jpg',
-'Julia Stiles':'photos/julia-stiles.jpg',
-'Maura Higgins':'photos/maura-higgins.jpg',
-'Sarah Jane Nader':'photos/sarah-jane-nader.jpg',
-'Tatyana Ali':'photos/tatyana-ali.jpg',
-'Taylor Hanson':'photos/taylor-hanson.jpg',
-'Tyler Cameron':'photos/tyler-cameron.jpg'
+'Amber Glenn':'photos/amber-glenn.jpg.JPG',
+'Ciara Miller':'photos/ciara-miller.jpg.JPG',
+'Conner Leavitt':'photos/conner-leavitt.jpg.JPG',
+'Connor Wood':'photos/connor-wood.jpg.JPG',
+'Ezra Frech':'photos/ezra-frech.jpg.JPG',
+'Giada De Laurentiis':'photos/giada-de-laurentiis.jpg.JPG',
+'Guillermo Rodriguez':'photos/guillermo-rodriguez.jpg.JPG',
+'Harry Shum Jr.':'photos/harry-shum-jr.jpg.JPG',
+'Jackson Olson':'photos/jackson-olson.jpg.JPG',
+'Jenna Dewan':'photos/jenna-dewan.jpg.JPG',
+'Julia Stiles':'photos/julia-stiles.jpg.JPG',
+'Maura Higgins':'photos/maura-higgins.jpg.JPG',
+'Sarah Jane Nader':'photos/sarah-jane-nader.jpg.JPG',
+'Tatyana Ali':'photos/tatyana-ali.jpg.JPG',
+'Taylor Hanson':'photos/taylor-hanson.jpg.JPG',
+'Tyler Cameron':'photos/tyler-cameron.jpg.JPG'
 };
 let state=null;const $=x=>document.getElementById(x);
 function draw(){let out=new Set(state.eliminated);$('active').textContent=16-out.size;$('out').textContent=out.size;$('episode').textContent=state.week||'—';$('status').textContent=state.note||'Latest verified results';$('updated').textContent='Last verified: '+(state.updated||'unknown')+' • Auto-checks every 6 hours';$('cards').innerHTML='';cast.forEach(([name,pro])=>{let el=document.createElement('article');el.className='card'+(out.has(name)?' out':'');let score=state.scores?.[name];el.innerHTML='<div class="portrait"><span class="initials"></span><img alt="" loading="lazy"></div><div class="content"><div class="name"></div><div class="pro"></div><div class="tag"></div><div class="score"></div></div>';el.querySelector('.initials').textContent=name.split(' ').map(s=>s[0]).slice(0,2).join('');el.querySelector('.name').textContent=name;el.querySelector('.pro').textContent='Pro: '+pro;el.querySelector('.tag').textContent=out.has(name)?'Eliminated':'Still competing';el.querySelector('.score').textContent=score!==undefined?'Latest judges’ score: '+score+'/40':'';$('cards').append(el);loadPhoto(name,el.querySelector('img'))})}
